@@ -1,15 +1,18 @@
 class Card
-  def initialize(numSymbs, symbType, shadeType, colr)
-    @numberOfSymbols = numSymbs
-    @symbolType = symbType
-    @shadingType = shadeType
+  def initialize(colr, fllType, shpType, numSymbs)
     @color = colr
-    # @fileName = numSymbs[0] + "_" + symbType[0,4] + "_" + shadeType[0,3] + "_" + colr[0,3]
+    @fillType = fllType
+    @shapeType = shpType
+    @numberOfSymbols = numSymbs
+    @fileName = "#{colr}_#{fllType}_#{shpType}_#{numSymbs}.fileExt"
   end
   def to_s
-    puts "#{@numberOfSymbols}, #{@symbolType}, #{@shadingType}, #{@color}"
+    puts "#{@color}, #{@fillType}, #{@shapeType}, #{@numberOfSymbols}"
   end
   def fileName
-    # puts @fileName
+    puts @fileName
+  end
+  def printCard
+    "#{@color[0]}#{@fillType[0]}#{@shapeType[0]}#{@numberOfSymbols[0]}"
   end
 end
