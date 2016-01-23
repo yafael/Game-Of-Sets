@@ -1,6 +1,8 @@
 require_relative "card.rb"
 
 class Deck
+
+  #Initializes deck with all 81 cards.
   def initialize
     @colors   = ['Red', 'Green', 'Purple']
     @fills = ['Solid', 'Striped', 'Empty']
@@ -20,15 +22,16 @@ class Deck
     }
     @deck.shuffle!
   end
+
+  #Returns string version of the deck
   def to_s
     for i in 0..81
       @deck[i].to_s
     end
   end
+
+  #Removes a random card from the deck.
   def removeAny
     @deck.pop
-  end
-  def printCard
-    puts ""
   end
 end
