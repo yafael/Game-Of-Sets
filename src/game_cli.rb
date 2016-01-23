@@ -14,29 +14,38 @@ end
 
 model = GameModel.new
 while !model.isOver?
-  Utility.printCards model.current_cards
-  puts "Select 3 cards. Separated by space."
+  Utility.printCards(model.current_cards, model.rows)
+  puts "Select 3 cards. Separated by space. Or enter \"three\" to get three new cards"
   input = gets.to_s.split ' '
-  first = Utility.parseInput input[0]
-  second = Utility.parseInput input[1]
-  third = Utility.parseInput input[2]
-
-  firstCard = model.current_cards[first[0]][first[1]]
-  secondCard = model.current_cards[second[0]][second[1]]
-  thirdCard = model.current_cards[third[0]][third[1]]
-
-  #TODO: Need to check if no common cards are selected
-  puts 'You selected the following cards: '
-  puts '       ' + firstCard.to_s
-  puts '       ' + secondCard.to_s
-  puts '       ' + thirdCard.to_s
-
-  if Utility.isSet?(firstCard, secondCard, thirdCard)
-    puts "You found a Set"
-    model.replaceCard first[0], first[1]
-    model.replaceCard second[0], second[1]
-    model.replaceCard third[0], third[1]
+  if input[0].eql? "three"
+    model.add_row
   else
-    puts "You failed to find a set"
+    first = Utility.parseInput input[0]
+    second = Utility.parseInput input[1]
+    third = Utility.parseInput input[2]
+
+    fC = model.current_cards[first[0]][first[1]]
+    sC = model.current_cards[second[0]][second[1]]
+    tC = model.current_cards[third[0]][third[1]]
+
+    if !Utility.areUnique(fC, sC, tC)
+      puts "The cards you chose were not unique. Please try again:"
+      next
+    end
+
+    #TODO: Need to check if no common cards are selected
+    puts 'You selected the following cards: '
+    puts '       ' + fC.to_s
+    puts '       ' + sC.to_s
+    puts '       ' + tC.to_s
+
+    if Utility.isSet?(fC, sC, tC)
+      puts "You found a Set"
+      model.replaceCard first[0], first[1]
+      model.replaceCard second[0], second[1]
+      model.replaceCard third[0], third[1]
+    else
+      puts "You failed to find a set"
+    end
   end
 end

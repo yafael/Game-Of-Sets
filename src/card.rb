@@ -32,4 +32,9 @@ class Card
   def printCard
     "#{@color[0]}#{@fillType[0]}#{@shapeType[0]}#{@numberOfSymbols}"
   end
+
+  def equal?(c2)
+    @color <=> c2.color && @fillType <=> c2.fillType && @shapeType <=> c2.shapeType && @numberOfSymbols <=> c2.numberOfSymbols
+  end
+
 end

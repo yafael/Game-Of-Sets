@@ -11,19 +11,16 @@ class Utility
   end
 
 
-  def self.printCards(currentCards)
+  def self.printCards(currentCards, numRows)
     puts "##############################################"
     puts""
     puts "          01          02          03          "
-    puts""
-    puts "  01     #{currentCards[0][0].printCard}        #{currentCards[0][1].printCard}        #{currentCards[0][2].printCard}"
-    puts""
-    puts "  02     #{currentCards[1][0].printCard}        #{currentCards[1][1].printCard}        #{currentCards[1][2].printCard}"
-    puts""
-    puts "  03     #{currentCards[2][0].printCard}        #{currentCards[2][1].printCard}        #{currentCards[2][2].printCard}"
-    puts""
-    puts "  04     #{currentCards[3][0].printCard}        #{currentCards[3][1].printCard}        #{currentCards[3][2].printCard}"
-    puts""
+    numRows -= 1
+    for i in 0..numRows
+      puts""
+      puts "  0#{i+1}     #{currentCards[i][0].printCard}        #{currentCards[i][1].printCard}        #{currentCards[i][2].printCard}"
+    end
+    puts ""
     puts "##############################################"
   end
 
@@ -73,6 +70,10 @@ class Utility
     (one.numberOfSymbols == two.numberOfSymbols && two.numberOfSymbols == three.numberOfSymbols) ||
         (one.numberOfSymbols != two.numberOfSymbols && one.numberOfSymbols != three.numberOfSymbols &&
             two.numberOfSymbols != three.numberOfSymbols)
+  end
+
+  def self.areUnique(fC, sC, tC)
+    !(fC.equal?(sC) || fC.equal?(tC) || sC.equal?(tC))
   end
 
 end
