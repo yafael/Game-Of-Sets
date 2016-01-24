@@ -34,4 +34,8 @@ class Deck
   def removeAny
     @deck.pop
   end
+
+  def cardsRemaining
+    @deck.length
+  end
 end

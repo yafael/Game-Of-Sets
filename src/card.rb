@@ -30,6 +30,6 @@ class Card
 
   # Returns string version to print a card to game console. The printed string is NOT the one returned by to_s.
   def printCard
-    "#{@color[0]}#{@fillType[0]}#{@shapeType[0]}#{@numberOfSymbols[0]}"
+    "#{@color[0]}#{@fillType[0]}#{@shapeType[0]}#{@numberOfSymbols}"
   end
 end
