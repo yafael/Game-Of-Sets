@@ -76,4 +76,50 @@ class Utility
     !(fC.equal?(sC) || fC.equal?(tC) || sC.equal?(tC))
   end
 
+  def self.chooseRandom(model)
+    columns = [1, 2, 3]
+    rows = []
+    for i in 0..model.rows-1
+      if i <= 0
+        rows[i] = 1
+      else
+        rows[i] = i
+      end
+    end
+    cards = ""
+    for i in 0..2
+      column = columns.sample
+      row = rows.sample
+      if i <= 1 && i >= 1
+        cards << " 0#{column}0#{row} "
+      else
+        cards << "0#{column}0#{row}"
+      end
+    end
+    cards
+  end
+
+  def self.validNumbers(rows, input)
+    isValid = true
+    validRow = false
+    for i in 0..2
+      if input[i].length != 4
+        isValid = false
+      else
+       if !(input[i][0].eql?("0") || input[i][0][2].eql?("0"))
+         isValid = false
+       end
+       if !(input[i][1].eql?("1") || input[i][1].eql?("2") || input[i][1].eql?("3"))
+         isValid = false
+       end
+       for j in 1..rows
+         if input[i][j].eql?("#{j}")
+           validRow = true
+         end
+       end
+      end
+      end
+    end
+  isValid = isValid && validRow
+  isValid
 end

@@ -4,6 +4,7 @@ class GameModel
 
   attr_reader :current_cards
   attr_reader :rows
+  attr_reader :deck
 
   MIN_CARDS = 3
 
@@ -22,10 +23,6 @@ class GameModel
 
   def replaceCard (row, column)
     @current_cards[row][column] = @deck.removeAny
-  end
-
-  def putAdditionalThree
-    @current_cards.push [@deck.removeAny, @deck.removeAny, @deck.removeAny]
   end
 
   def isOver?

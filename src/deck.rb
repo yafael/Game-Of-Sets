@@ -2,12 +2,14 @@ require_relative "card.rb"
 
 class Deck
 
+  attr_reader :deck
+
   #Initializes deck with all 81 cards.
   def initialize
     @colors   = ['Red', 'Green', 'Purple']
     @fills = ['Solid', 'Striped', 'Empty']
     @shapes  = ['Diamond', 'Squiggle', 'RoundedRectangle']
-    @numbers  = [1, 2, 3]
+    @numbers  = ["1", "2", "3"]
     @deck = Array.new(81)
     i = 0
     @colors.each { |color|

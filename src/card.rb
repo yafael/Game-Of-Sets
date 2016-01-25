@@ -30,11 +30,11 @@ class Card
 
   # Returns string version to print a card to game console. The printed string is NOT the one returned by to_s.
   def printCard
-    "#{@color[0]}#{@fillType[0]}#{@shapeType[0]}#{@numberOfSymbols}"
+    "#{@color[0]}#{@fillType[0]}#{@shapeType[0]}#{@numberOfSymbols[0]}"
   end
 
   def equal?(c2)
-    @color <=> c2.color && @fillType <=> c2.fillType && @shapeType <=> c2.shapeType && @numberOfSymbols <=> c2.numberOfSymbols
+    @color.eql?(c2.color) && @fillType.eql?(c2.fillType) && @shapeType.eql?(c2.shapeType) && @numberOfSymbols.eql?(c2.numberOfSymbols)
   end
 
 end
