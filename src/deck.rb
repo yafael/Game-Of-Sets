@@ -37,6 +37,7 @@ class Deck
     @deck.pop
   end
 
+  #Returns number of cards remaining in the deck.
   def cardsRemaining
     @deck.length
   end
