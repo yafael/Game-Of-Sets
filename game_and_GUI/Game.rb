@@ -8,7 +8,7 @@ class Game
 
   def self.playGame(numOfPlayers, opponent)
 
-Shoes.app(title: "The Game of Set", width: 1024, height: 768) { 
+  Shoes.app(title: "The Game of Set", width: 1024, height: 768) { 
 
 	# create deck and pull out initial 12 cards, saving printable names (without .jpg extension) in current_cards array
    	deck = Deck.new

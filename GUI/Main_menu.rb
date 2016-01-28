@@ -6,8 +6,10 @@ require_relative 'GUI_Utility.rb'
 require_relative 'Game.rb'
 require_relative 'Instructions.rb'
 require_relative 'HighScore.rb'
+require_relative 'game_model.rb'
 
 class Main_menu
+	def self.startMainMenu
 	Shoes.app :title => "Main Menu", :width => 1024, :height => 576 do
 			background 'backgroung.jpg', :width => 1024, :height => 576
 		stack :width => "100%" do
@@ -28,21 +30,23 @@ class Main_menu
 		@exit = button 'Exit'
 			@exit.move(930,540)
 		@exit.click { exit }
-		@Arcade.click { Utility.hideButtons(@Arcade, @Comp, @Human, @Instr, @Hsc)
+		@Arcade.click { 
 		  Game.playGame(1, "Self")
 		}
-		@Comp.click { Utility.hideButtons(@Arcade, @Comp, @Human, @Instr, @Hsc)
+		@Comp.click { 
 		  Game.playGame(1, "Computer")
 		}
-		@Human.click { Utility.hideButtons(@Arcade, @Comp, @Human, @Instr, @Hsc)
+		@Human.click { 
 		  Game.playGame(2, "Human")
 		}
-		@Instr.click { Utility.hideButtons(@Arcade, @Comp, @Human, @Instr, @Hsc)
+		@Instr.click { 
 		  Instructions.showInstructions
 		}
-		@Hsc.click { Utility.hideButtons(@Arcade, @Comp, @Human, @Instr, @Hsc)
+		@Hsc.click { 
 		  HighScore.showHighScores
 		}
 	end
+	end
 end	
+Main_menu.startMainMenu
 
