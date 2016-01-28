@@ -14,6 +14,8 @@ class Main_menu
 			@title = banner 'The Game of Sets', :stroke => white, :align => 'center', :font => 'Trebuchet MS', :top => 30
 		end
 		rotate 90
+		@mainMenu = button 'Main Menu'
+			@mainMenu.move(10000, 10000)
 		@Arcade = button 'Arcade'
 			@Arcade.move(65,300)
 		@Comp = button 'vs Computer' 
