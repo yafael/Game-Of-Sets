@@ -13,14 +13,14 @@ class Main_menu
 	Shoes.app :title => "Main Menu", :width => 1024, :height => 576 do
 			background 'backgroung.jpg', :width => 1024, :height => 576
 		stack :width => "100%" do
-			@title = banner 'The Game of Sets', :stroke => white, :align => 'center', :font => 'Trebuchet MS', :top => 30
+			@title = banner 'The Game of Set', :stroke => white, :align => 'center', :font => 'Trebuchet MS', :top => 30
 		end
 		rotate 90
-		@Arcade = button 'Arcade'
+		@Arcade = button 'Solitaire'
 			@Arcade.move(65,300)
-		@Comp = button 'vs Computer' 
+		@Comp = button 'vs. Computer' 
 			@Comp.move(250,300)			
-		@Human = button 'vs Human'
+		@Human = button 'vs. Human'
 			@Human.move(465,300)
 		@Instr = button 'Instructions'
 			@Instr.move(655,300)
