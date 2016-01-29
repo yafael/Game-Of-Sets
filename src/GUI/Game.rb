@@ -38,6 +38,9 @@ class Game
 				@card11.click {
 				        # this alert is just to show that the image click works
 					alert "The click WORKED!"
+				
+					# this is an example of how to replace the card with a new one (we will of course want to replace it with a new card from the deck, but for illustration purposes I'm using another card we already have on the board)
+					@card11.path = "cards/#{current_cards[3]}.jpg"
 				}
 			@card12 = image "cards/#{current_cards[1]}.jpg", :width => 0.25
 				@card12.click {
