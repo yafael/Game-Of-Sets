@@ -29,7 +29,7 @@ class Utility
   # +cardOne+:: First card that might form a set
   # +cardTwo+:: Second card that might form a set
   # +cardThree+:: Third card that might form a set.
-  def self.isSet? (cardOne, cardTwo, cardThree)
+  def self.isSet?(cardOne, cardTwo, cardThree)
     checkColor?(cardOne, cardTwo, cardThree) && checkFill?(cardOne, cardTwo, cardThree) &&
         checkSymbol?(cardOne, cardTwo, cardThree) && checkNumber?(cardOne, cardTwo, cardThree)
   end
@@ -139,6 +139,32 @@ class Utility
     c1.style(:width => cW)
     c2.style(:width => cW)
     c3.style(:width => cW)
+  end
+  
+  def self.changeFiveFlowWidth(f1, f2, f3, f4, f5)
+	f1.style(:width => '16%')
+	f2.style(:width => '16%')
+	f3.style(:width => '16%')
+	f4.style(:width => '16%')
+	f5.style(:width => '16%')
+  end
+
+  def self.changeSixFlowWidth(f1, f2, f3, f4, f5, f6)
+	f1.style(:width => '15%')
+	f2.style(:width => '15%')
+	f3.style(:width => '15%')
+	f4.style(:width => '15%')
+	f5.style(:width => '15%')
+	f6.style(:width => '15%')
+  end
+
+  def self.changeThreePaths(card1, card2, card3, deck, current_cards, rows)
+	current_cards[rows*3+1] = deck.removeAny
+	current_cards[rows*3+2] = deck.removeAny
+	current_cards[rows*3+3] = deck.removeAny
+	card1.path = "cards/#{current_cards[rows*3+1].printCard}.jpg"
+	card2.path = "cards/#{current_cards[rows*3+2].printCard}.jpg"
+	card3.path = "cards/#{current_cards[rows*3+3].printCard}.jpg"
   end
 
 end
