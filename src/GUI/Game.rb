@@ -1,5 +1,3 @@
-# TODO: [Katie 1.29.16 (updated 11:18 a.m.)] card-clicking works and cards are checked to see if they are a Set of not
-
 require_relative 'game_model.rb'
 require_relative 'GUI_Utility.rb'
 require_relative 'utility.rb'
@@ -27,17 +25,13 @@ class Game
 	def addCardToSet(playerSet, cardName)
 		playerSet.push cardName
 		if playerSet.length == 3
-			self.checkSet?(playerSet)
+			self.checkSet(playerSet)
 		end
 	end
 
-	# method to return a boolean value indicating whether or not the cards are a valid Set, and update player scores as need be
-	def checkSet?(playerSet)
-		checkColor = !!( (playerSet[0][0] != playerSet[1][0] && playerSet[0][0] != playerSet[2][0] && playerSet[1][0] != playerSet[2][0] ) || ( playerSet[0][0] == playerSet[1][0] &&  playerSet[0][0] == playerSet[2][0] ) )
-		checkFill = !!( (playerSet[0][1] != playerSet[1][1] && playerSet[0][1] != playerSet[2][1] && playerSet[1][1] != playerSet[2][1] ) || ( playerSet[0][1] == playerSet[1][1] &&  playerSet[0][1] == playerSet[2][1] ) )
-		checkShape = !!( (playerSet[0][2] != playerSet[1][2] && playerSet[0][2] != playerSet[2][2] && playerSet[1][2] != playerSet[2][2] ) || ( playerSet[0][2] == playerSet[1][2] &&  playerSet[0][2] == playerSet[2][2] ) )
-		checkNum = !!( (playerSet[0][3] != playerSet[1][3] && playerSet[0][3] != playerSet[2][3] && playerSet[1][3] != playerSet[2][3] ) || ( playerSet[0][3] == playerSet[1][3] &&  playerSet[0][3] == playerSet[2][3] ) )
-		if !!(checkColor && checkFill && checkShape && checkNum)
+	# method to call Utility method to deterine whether or not the cards are a valid Set, and provide an alert either way
+	def checkSet(playerSet)
+		if Utility.isSet?(playerSet[0], playerSet[1], playerSet[2])
 			alert "SET FOUND!"
 			# clear out the set array so it can be used again
 			playerSet.clear
@@ -56,67 +50,73 @@ class Game
     current_cards = []
     for i in 0...12 do
 	  card = deck.removeAny
-	  current_cards.push card.printCard
+	  current_cards.push card
     end
 
         # current cards: card names are cardCOLROW, where col = 1 - 3 and row = 1 - 4
 	stack {
 		flow {
-			@card11 = image "cards/#{current_cards[0]}.jpg", :width => 0.25 
+			@card11 = image "cards/#{current_cards[0].printCard}.jpg", :width => 0.25 
 				@card11.click {
-				        self.addCardToSet(playerSet, "#{current_cards[0]}")
+				        self.addCardToSet(playerSet, current_cards[0])
+				# this is an example of how we can call methods in other files/classes
+				if Utility.areUnique(current_cards[0], current_cards[1], current_cards[2])
+					alert "They're unique!"
+					
+				end
+
 			# this is an example of how to replace the card with a new one (we will of course want to replace it with a new card from the deck, but for illustration purposes I'm using another card we already have on the board)
-					@card11.path = "cards/#{current_cards[3]}.jpg"
+					@card11.path = "cards/#{current_cards[3].printCard}.jpg"
 				}
-			@card12 = image "cards/#{current_cards[1]}.jpg", :width => 0.25
+			@card12 = image "cards/#{current_cards[1].printCard}.jpg", :width => 0.25
 				@card12.click {
-					self.addCardToSet(playerSet, "#{current_cards[1]}")
+					self.addCardToSet(playerSet, current_cards[1])
 				}
-			@card13 = image "cards/#{current_cards[2]}.jpg", :width => 0.25
+			@card13 = image "cards/#{current_cards[2].printCard}.jpg", :width => 0.25
 				@card13.click {
-					self.addCardToSet(playerSet, "#{current_cards[2]}")
+					self.addCardToSet(playerSet, current_cards[2])
 				}
-			@card14 = image "cards/#{current_cards[3]}.jpg", :width => 0.25
+			@card14 = image "cards/#{current_cards[3].printCard}.jpg", :width => 0.25
 				@card14.click {
-					self.addCardToSet(playerSet, "#{current_cards[3]}")
+					self.addCardToSet(playerSet, current_cards[3])
 				}
 		}
 
 		flow {
-			@card21 = image "cards/#{current_cards[4]}.jpg", :width => 0.25
+			@card21 = image "cards/#{current_cards[4].printCard}.jpg", :width => 0.25
 				@card21.click {
-					addCardToSet(playerSet, "#{current_cards[4]}")
+					addCardToSet(playerSet, current_cards[3])
 				}
-			@card22 = image "cards/#{current_cards[5]}.jpg", :width => 0.25
+			@card22 = image "cards/#{current_cards[5].printCard}.jpg", :width => 0.25
 				@card22.click {
-					addCardToSet(playerSet, "#{current_cards[5]}")
+					addCardToSet(playerSet, current_cards[5])
 				}
-			@card23 = image "cards/#{current_cards[6]}.jpg", :width => 0.25
+			@card23 = image "cards/#{current_cards[6].printCard}.jpg", :width => 0.25
 				@card23.click {
-					addCardToSet(playerSet, "#{current_cards[6]}")
+					addCardToSet(playerSet, current_cards[6])
 				}
-			@card24 = image "cards/#{current_cards[7]}.jpg", :width => 0.25
+			@card24 = image "cards/#{current_cards[7].printCard}.jpg", :width => 0.25
 				@card24.click {
-					addCardToSet(playerSet, "#{current_cards[7]}")
+					addCardToSet(playerSet, current_cards[7])
 				}
 		}
 	
 		flow {
-			@card31 = image "cards/#{current_cards[8]}.jpg", :width => 0.25
+			@card31 = image "cards/#{current_cards[8].printCard}.jpg", :width => 0.25
 				@card31.click {
-					addCardToSet(playerSet, "#{current_cards[8]}")
+					addCardToSet(playerSet, current_cards[8])
 				}
-			@card32 = image "cards/#{current_cards[9]}.jpg", :width => 0.25
+			@card32 = image "cards/#{current_cards[9].printCard}.jpg", :width => 0.25
 				@card32.click {
-					addCardToSet(playerSet, "#{current_cards[9]}")
+					addCardToSet(playerSet, current_cards[9])
 				}
-			@card33 = image "cards/#{current_cards[10]}.jpg", :width => 0.25
+			@card33 = image "cards/#{current_cards[10].printCard}.jpg", :width => 0.25
 				@card33.click {
-					addCardToSet(playerSet, "#{current_cards[10]}")
+					addCardToSet(playerSet, current_cards[10])
 				}
-			@card34 = image "cards/#{current_cards[11]}.jpg", :width => 0.25
+			@card34 = image "cards/#{current_cards[11].printCard}.jpg", :width => 0.25
 				@card34.click {
-					addCardToSet(playerSet, "#{current_cards[11]}")
+					addCardToSet(playerSet, current_cards[11])
 				}
 		}
 	}
