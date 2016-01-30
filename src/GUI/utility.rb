@@ -123,4 +123,22 @@ class Utility
     isValid
   end
 
+  def self.hideThreeCards(c1, c2, c3)
+    c1.hide
+    c2.hide
+    c3.hide
+  end
+
+  def self.showThreeCards(c1, c2, c3)
+    c1.show
+    c2.show
+    c3.show
+  end
+
+  def self.changeThreeCardsWidth(c1, c2, c3, cW)
+    c1.style(:width => cW)
+    c2.style(:width => cW)
+    c3.style(:width => cW)
+  end
+
 end
