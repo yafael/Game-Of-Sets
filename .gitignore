@@ -38,3 +38,6 @@ build/
 # emacs and vim backup/swap files respectively
 *.swp
 *~
+
+#The highscores file will not be transferred from repo to repo
+highScores.txt
