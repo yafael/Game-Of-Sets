@@ -32,21 +32,24 @@ class Main_menu
 		@exit.click { exit }
 		@Arcade.click { 
 		  Game.playGame(1, "Self")
+		  close
 		}
 		@Comp.click { 
 		  Game.playGame(1, "Computer")
+		  close
 		}
 		@Human.click { 
 		  Game.playGame(2, "Human")
+		  close
 		}
 		@Instr.click { 
 		  Instructions.showInstructions
+		  close
 		}
 		@Hsc.click { 
-		  HighScore.showHighScores
+		  HighScore.showHighScores	
+		  close
 		}
 	end
 	end
 end	
-Main_menu.startMainMenu
-

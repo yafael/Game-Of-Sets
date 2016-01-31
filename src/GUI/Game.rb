@@ -15,6 +15,7 @@ class Game
       @mainMenu.move(800, 540)
     @mainMenu.click {
       Main_menu.startMainMenu
+      close
     }
  
     # button to exit game entirely
@@ -211,48 +212,8 @@ class Game
 			end
 		}
 	end
-    model = GameModel.new
-    playersTurn = 1
-    playersScore = [0, 0]
-    cardsChosen = []
-    # GUI_Utility.putThreeNewCards(model)
-    while !model.isOver?
-      GUI_Utility.printCards(model.current_cards, model.rows)
-      model.current_cards[0][0].buttn.move(100,300)
-
-      cardsChosen = GUI_Utility.printSelection(numOfPlayers, playersTurn, opponent)
-
-      fC = cardsChosen[0]
-      sC = cardsChosen[1]
-      tC = cardsChosen[2]
-
-      while !Utility.areUnique(fC, sC, tC)
-        alert "The cards that were chose were not unique. Please try again:"
-        next
-	fC = cardsChosen[0]
-        sC = cardsChosen[1]
-        tC = cardsChosen[2]
-      end
-
-      if Utility.isSet?(fC, sC, tC)
-	GUI_Utility.addScore(numOfPlayers, playersTurn, opponent, playersScore)
-        model.replaceCard first[0], first[1]
-        model.replaceCard second[0], second[1]
-        model.replaceCard third[0], third[1]
-      else
-	GUI_Utility.printFailedToFindSet(numOfPlayers, playersTurn, opponent, playersScore)
-      end
-      if playersTurn <= 2 && playersTurn >= 2
-        playersTurn = 1
-      elsif opponent.eql?("Computer")
-        playersTurn = 2
-      end
-    end
 
   end
-
-
   end
 
 end
-Game.playGame(1, "Self")

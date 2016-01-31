@@ -1,10 +1,15 @@
 class Instructions
-
+	def self.showInstructions
 	Shoes.app :title => "High Scores", :width => 1024, :height => 576 do
-		
+		@mainMenu = button 'Main Menu'
+      		@mainMenu.move(460, 520)
+    		@mainMenu.click {
+      			Main_menu.startMainMenu
+			close
+    		}
 		stack(:width  => 1024, :height => 576, :scroll => false) do
-			
-			background('/home/yafael/Webapps/Project1/Instructions/backf.jpg')
+			background 'backgroung.jpg', :width => 1024, :height => 576
+			# background('/home/yafael/Webapps/Project1/Instructions/backf.jpg')
 
 			stack :width => "100%" do
 				@title = title 'Instructions: The Game of Sets', :stroke => white, :align => 'center', :font => 'Trebuchet MS', :top => 20
@@ -29,5 +34,6 @@ class Instructions
 			end
 
 		end
+	end
 	end
 end
