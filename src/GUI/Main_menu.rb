@@ -9,7 +9,6 @@ require_relative 'HighScore.rb'
 require_relative 'game_model.rb'
 
 class Main_menu
-	def self.startMainMenu
 	Shoes.app :title => "Main Menu", :width => 1024, :height => 576 do
 			background 'backgroung.jpg', :width => 1024, :height => 576
 		stack :width => "100%" do
@@ -46,7 +45,5 @@ class Main_menu
 		  HighScore.showHighScores
 		}
 	end
-	end
 end	
-Main_menu.startMainMenu
 

@@ -255,4 +255,3 @@ class Game
   end
 
 end
-Game.playGame(1, "Self")
