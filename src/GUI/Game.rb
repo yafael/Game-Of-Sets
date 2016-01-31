@@ -7,12 +7,16 @@ class Game
 
   def self.playGame(numOfPlayers, opponent)
     Shoes.app :title => "The Game of Set", :width => 1024, :height => 576 do
+	background 'backgroung.jpg', :width => 1024, :height => 576
 
     @rows = 4
+    @player1Score = 0
+    @player2Score = 0
+    @playersTurn = 1
 
     # button to close game window and return to main menu
     @mainMenu = button 'Main Menu'
-      @mainMenu.move(800, 540)
+      @mainMenu.move(460, 530)
     @mainMenu.click {
       Main_menu.startMainMenu
       close
@@ -24,7 +28,7 @@ class Game
       @exit.click { exit }
 
 	@addThreeCards = button 'Add Three Cards'
-		@addThreeCards.move(600, 540)
+		@addThreeCards.move(437, 475)
 
 # method to fill up the set array with the chosen cards
 	def addCardToSet(playerSet, cardName)
@@ -53,7 +57,7 @@ class Game
     end
 	
 	# 12 cards: oW = 10% iW = 20% cW = 200
-	# 15 cards: oW = 10% iW = 16% cW = 170
+	# 15 cards: oW = 10% iW = 16% cW = 160
 	# 18 cards: oW = 5% iW = 15% cW = 150
 	@outerWidth = '10%'
 	@innerWidth = '20%'
@@ -67,6 +71,7 @@ class Game
 			@card1 = image "cards/#{current_cards[0].printCard}.jpg", :width => @cardWidth
 				@card1.click {
 					self.addCardToSet(@playerSet, current_cards[0]) 
+					self.changeTurn(@playersTurn, opponent)
 				}
 			@card2 = image "cards/#{current_cards[1].printCard}.jpg", :width => @cardWidth
 				@card2.click {
@@ -152,14 +157,14 @@ class Game
 	}	
 	@addThreeCards.click {
 		if @rows <= 4 && @rows >= 4
-			Utility.changeThreeCardsWidth(@card1, @card2, @card3, 170)
-			Utility.changeThreeCardsWidth(@card4, @card5, @card6, 170)
-			Utility.changeThreeCardsWidth(@card7, @card8, @card9, 170)
-			Utility.changeThreeCardsWidth(@card10, @card11, @card12, 170)
+			Utility.changeThreeCardsWidth(@card1, @card2, @card3, 160)
+			Utility.changeThreeCardsWidth(@card4, @card5, @card6, 160)
+			Utility.changeThreeCardsWidth(@card7, @card8, @card9, 160)
+			Utility.changeThreeCardsWidth(@card10, @card11, @card12, 160)
 			Utility.showThreeCards(@card13, @card14, @card15)
 			Utility.showThreeCards(@card16, @card17, @card18)
-			Utility.changeThreeCardsWidth(@card13, @card14, @card15, 170)
-			Utility.changeThreeCardsWidth(@card16, @card17, @card18, 170)
+			Utility.changeThreeCardsWidth(@card13, @card14, @card15, 160)
+			Utility.changeThreeCardsWidth(@card16, @card17, @card18, 160)
 			Utility.hideThreeCards(@card16, @card17, @card18)
 			Utility.changeFiveFlowWidth(@f1, @f2, @f3, @f4, @f5)
 			Utility.changeThreePaths(@card13, @card14, @card15, deck, current_cards, @rows)
@@ -185,32 +190,47 @@ class Game
 	if(numOfPlayers >= 2 && numOfPlayers <= 2)
 		flow {
 			stack :width => '20%' do
-				@player21coreText = para "Player 1 Score: #{player1Score}", :align => 'center'
+				@player21coreText = para "Player 1 Score: #{@player1Score}", :align => 'center'
 			end
 			stack :width => '60%' do 
 				@playersTurnStr = para "Player 1's turn: Please choose three cards.", :align => 'center'
 			end
 			stack :width => '20%' do
-				@player2ScoreText = para "Player 2 Score: #{player2Score}", :align => 'center'
+				@player2ScoreText = para "Player 2 Score: #{@player2Score}", :align => 'center'
 			end
 		}
 	elsif(opponent.eql?("Computer"))
 		flow {
 			stack :width => '20%' do
-				@player21coreText = para "Player 1 Score: #{player1Score}", :align => 'center'
+				@player21coreText = para "Player 1 Score: #{@player1Score}", :align => 'center'
 			end
 			stack :width => '60%' do 
+				@playersTurnStr = para "Player 1's turn: Please choose three cards.", :align => 'center'
 			end
 			stack :width => '20%' do
-				@player2ScoreText = para "Computer's Score: #{player2Score}", :align => 'center'
+				@player2ScoreText = para "Computer's Score: #{@player2Score}", :align => 'center'
 			end
 		}
 	else
 		flow {
 			stack :width => '100%' do
-				@player21coreText = para "Player 1 Score: #{player1Score}", :align => 'center'
+				@player21coreText = para "Player 1 Score: #{@player1Score}", :align => 'center'
+				@playersTurnStr = para "Please choose three cards.", :align => 'center'
 			end
 		}
+	end
+	def changeTurn(num, comp)
+		if num <= 1 && num >= 1
+			if comp.eql?("Computer")
+				@playersTurnStr.text = "The Computer will now choose three cards."
+			else
+				@playersTurnStr.text = "Player 2's turn: Please choose three cards."
+			end
+			@playersTurn = 2
+		else
+			@playersTurnStr.text = "Player 1's turn: Please choose three cards."
+			@playersTurn = 1
+		end
 	end
 
   end

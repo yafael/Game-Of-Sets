@@ -2,7 +2,7 @@ class Instructions
 	def self.showInstructions
 	Shoes.app :title => "High Scores", :width => 1024, :height => 576 do
 		@mainMenu = button 'Main Menu'
-      		@mainMenu.move(460, 520)
+      		@mainMenu.move(460, 530)
     		@mainMenu.click {
       			Main_menu.startMainMenu
 			close
