@@ -1,0 +1,10 @@
+#!/bin/bash -e
+#Runs the GUI version of Set using Shoes
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+if [ -e ~/.shoes/walkabout/lib/shoes ]
+then
+	~/.shoes/walkabout/shoes $DIR/../src/GUI/Main.rb
+else
+	echo "Shoes could not be found in the walkabout folder"
+fi

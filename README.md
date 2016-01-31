@@ -24,7 +24,7 @@ An implementation of the game of set in ruby, provided in both a CLI form and a 
 ## Running the game
 
 ### CLI version
-navigate to the src folder and run `$ruby game_cli.rb` then follow the onscreen instructions.
+Simply run bin/set_cli. If errors are returned, navigate to the src folder and run `$ruby game_cli.rb` then follow the onscreen instructions.
 
 ### GUI version
-Open shoes as illustrated in the instructions linked above. Then from there choose 'open an app' and navigate to the repo>src>GUI>Main_menu.rb
+Simply run bin/set_gui. Otherwise if errors are returned, open shoes as illustrated in the instructions linked above. Then from there choose 'open an app' and navigate to the repo>src>GUI>Main_menu.rb

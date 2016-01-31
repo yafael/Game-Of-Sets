@@ -1,0 +1,8 @@
+#/bin/bash -e
+#A basic script to run the CLI version of set
+set -e
+
+#This one-liner to get the directory of the script is from
+#Dave Dopson on stack overflow
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ruby $DIR/../src/game_cli.rb || echo "Ruby 2.2.2 or greater is required"
