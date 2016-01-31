@@ -4,7 +4,7 @@ This is the main menu of the set game
 
 require_relative 'GUI_Utility.rb'
 require_relative 'Game.rb'
-require_relative 'Instructions.rb'
+require_relative 'instructions.rb'
 require_relative 'HighScore.rb'
 require_relative 'game_model.rb'
 
