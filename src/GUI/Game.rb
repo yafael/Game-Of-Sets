@@ -6,6 +6,7 @@ require_relative 'Main_menu.rb'
 class Game
 
   def self.playGame(numOfPlayers, opponent)
+
     Shoes.app :title => "The Game of Set", :width => 1024, :height => 576 do
 	background 'backgroung.jpg', :width => 1024, :height => 576
 
@@ -34,14 +35,16 @@ class Game
 	def addCardToSet(playerSet, cardName)
 		playerSet.push cardName
 		if playerSet.length == 3
+			# check for unique cards and Set; report results
 			if Utility.areUnique(playerSet[0], playerSet[1], playerSet[2]) && Utility.isSet?(playerSet[0], playerSet[1], playerSet[2])
-				alert 'Was a set'
+				alert 'Congratulations! You found a Set!'
+				# update appropriate player score (!!!!NEED TO ADD 2-PLAYER SCORE UPDATING)
+				@player1Score += 1
+				@player21coreText.replace "Player 1 Score: #{@player1Score}", :align => 'center'
 			else
-				alert 'Not a set'
+				alert 'Sorry, that is not a Set. Try again!'
 			end
-			playerSet.pop
-			playerSet.pop
-			playerSet.pop
+		playerSet.clear
 		end
 	end
 
@@ -63,7 +66,7 @@ class Game
 	@innerWidth = '20%'
 	@cardWidth = 200
 
-        # card names are cardCOLROW, where col = 1 - 3 and row = 1 - 4
+        # this is the basic card layout; card variable names are cardCOLROW, where col = 1 - 3 and row = 1 - 4
 	flow {
 		@f01 = flow :width => @outerWidth do 
 		end
@@ -155,6 +158,7 @@ class Game
 		@f02 = flow :width => @outerWidth do 
 		end
 	}	
+
 	@addThreeCards.click {
 		if @rows <= 4 && @rows >= 4
 			Utility.changeThreeCardsWidth(@card1, @card2, @card3, 160)
@@ -187,7 +191,7 @@ class Game
 	}
 	Utility.hideThreeCards(@card13, @card14, @card15)
 	Utility.hideThreeCards(@card16, @card17, @card18)
-	if(numOfPlayers >= 2 && numOfPlayers <= 2)
+	if(numOfPlayers <= 2 && numOfPlayers >= 2)
 		flow {
 			stack :width => '20%' do
 				@player21coreText = para "Player 1 Score: #{@player1Score}", :align => 'center'
@@ -211,14 +215,18 @@ class Game
 				@player2ScoreText = para "Computer's Score: #{@player2Score}", :align => 'center'
 			end
 		}
+	# this is the single player solitaire version
 	else
 		flow {
 			stack :width => '100%' do
 				@player21coreText = para "Player 1 Score: #{@player1Score}", :align => 'center'
-				@playersTurnStr = para "Please choose three cards.", :align => 'center'
+				@playersTurnStr = para "Please choose three cards that form a Set!", :align => 'center'
 			end
 		}
 	end
+
+# ideally we don't want to have any turns because it's a speed game; we should figure out which player found the Set and update their score accordingly
+=begin
 	def changeTurn(num, comp)
 		if num <= 1 && num >= 1
 			if comp.eql?("Computer")
@@ -232,6 +240,7 @@ class Game
 			@playersTurn = 1
 		end
 	end
+=end
 
   end
   end
