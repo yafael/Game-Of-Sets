@@ -4,6 +4,7 @@ class GameModel
 
   attr_reader :current_cards
   attr_reader :rows
+  attr_reader :deck
 
   MIN_CARDS = 3
 
@@ -44,7 +45,7 @@ class GameModel
 
   #Returns string version of the model.
   def to_s
-    @current_cards[@current_cards.length - 1].length.to_s
+    @current_cards.to_s
   end
 
 end

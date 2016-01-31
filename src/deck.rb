@@ -7,7 +7,7 @@ class Deck
   #Initializes deck with all 81 cards.
   def initialize
     @colors   = ['Red', 'Green', 'Purple']
-    @fills = ['Solid', 'Striped', 'Empty']
+    @fills = ['Filled', 'Striped', 'Empty']
     @shapes  = ['Diamond', 'Squiggle', 'RoundedRectangle']
     @numbers  = ["1", "2", "3"]
     @deck = Array.new(81)
