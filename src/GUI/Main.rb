@@ -5,7 +5,7 @@ This is the main menu of the set game
 require_relative 'GUI_Utility.rb'
 require_relative 'Game.rb'
 require_relative 'instructions.rb'
-require_relative 'HighScore.rb'
+require_relative 'HighScoreGUI.rb'
 require_relative 'game_model.rb'
 
 class Main
@@ -46,7 +46,7 @@ class Main
 		  close
 		}
 		@Hsc.click { 
-		  HighScore.showHighScores	
+		  HighScoreGUI.showHighScores	
 		  close
 		}
 	end
