@@ -1,4 +1,4 @@
-require_relative 'game_model.rb'
+require_relative '../game_model.rb'
 
 class GUI_Utility
 

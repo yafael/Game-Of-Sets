@@ -6,7 +6,7 @@ require_relative 'GUI_Utility.rb'
 require_relative 'Game.rb'
 require_relative 'instructions.rb'
 require_relative 'HighScoreGUI.rb'
-require_relative 'game_model.rb'
+require_relative '../game_model.rb'
 
 class Main
 	Shoes.app :title => "Main Menu", :width => 1024, :height => 576 do

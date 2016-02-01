@@ -1,7 +1,7 @@
-require_relative 'HighScore.rb'
-require_relative 'game_model.rb'
+require_relative '../HighScore.rb'
+require_relative '../game_model.rb'
 require_relative 'GUI_Utility.rb'
-require_relative 'utility.rb'
+require_relative '../utility.rb'
 require_relative 'Main_menu.rb'
 class HighScoreGUI
 
