@@ -8,8 +8,7 @@ class Instructions
 			close
     		}
 		stack(:width  => 1024, :height => 576, :scroll => false) do
-			background 'backgroung.jpg', :width => 1024, :height => 576
-			# background('/home/yafael/Webapps/Project1/Instructions/backf.jpg')
+			background '../../images/backgroung.jpg', :width => 1024, :height => 576
 
 			stack :width => "100%" do
 				@title = title 'Instructions: The Game of Sets', :stroke => white, :align => 'center', :font => 'Trebuchet MS', :top => 20

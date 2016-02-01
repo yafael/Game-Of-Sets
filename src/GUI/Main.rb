@@ -10,7 +10,7 @@ require_relative '../game_model.rb'
 
 class Main
 	Shoes.app :title => "Main Menu", :width => 1024, :height => 576 do
-			background 'backgroung.jpg', :width => 1024, :height => 576
+			background '../../images/backgroung.jpg', :width => 1024, :height => 576
 		stack :width => "100%" do
 			@title = banner 'The Game of Set', :stroke => white, :align => 'center', :font => 'Trebuchet MS', :top => 30
 		end

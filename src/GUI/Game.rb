@@ -8,7 +8,7 @@ class Game
   def self.playGame(numOfPlayers, opponent)
 
     Shoes.app :title => "The Game of Set", :width => 1024, :height => 576 do
-	background 'backgroung.jpg', :width => 1024, :height => 576
+	background '../../images/backgroung.jpg', :width => 1024, :height => 576
 
     @rows = 4
     @player1Score = 0
@@ -71,86 +71,86 @@ class Game
 		@f01 = flow :width => @outerWidth do 
 		end
 		@f1 = flow :width => @innerWidth do
-			@card1 = image "cards/#{current_cards[0].printCard}.jpg", :width => @cardWidth
+			@card1 = image "../../images/cards/#{current_cards[0].printCard}.jpg", :width => @cardWidth
 				@card1.click {
 					self.addCardToSet(@playerSet, current_cards[0]) 
 					self.changeTurn(@playersTurn, opponent)
 				}
-			@card2 = image "cards/#{current_cards[1].printCard}.jpg", :width => @cardWidth
+			@card2 = image "../../images/cards/#{current_cards[1].printCard}.jpg", :width => @cardWidth
 				@card2.click {
 					self.addCardToSet(@playerSet, current_cards[1])
 				}
-			@card3 = image "cards/#{current_cards[2].printCard}.jpg", :width => @cardWidth
+			@card3 = image "../../images/cards/#{current_cards[2].printCard}.jpg", :width => @cardWidth
 				@card3.click {
 					self.addCardToSet(@playerSet, current_cards[2])
 				}
 		end
 		@f2 = flow :width => @innerWidth do
-			@card4 = image "cards/#{current_cards[3].printCard}.jpg", :width => @cardWidth
+			@card4 = image "../../images/cards/#{current_cards[3].printCard}.jpg", :width => @cardWidth
 				@card4.click {
 					self.addCardToSet(@playerSet, current_cards[3])
 				}
-			@card5 = image "cards/#{current_cards[4].printCard}.jpg", :width => @cardWidth
+			@card5 = image "../../images/cards/#{current_cards[4].printCard}.jpg", :width => @cardWidth
 				@card5.click {
 					self.addCardToSet(@playerSet, current_cards[4])
 				}
-			@card6 = image "cards/#{current_cards[5].printCard}.jpg", :width => @cardWidth
+			@card6 = image "../../images/cards/#{current_cards[5].printCard}.jpg", :width => @cardWidth
 				@card6.click {
 					self.addCardToSet(@playerSet, current_cards[5])
 				}
 		end
 		@f3 = flow :width => @innerWidth do
-			@card7 = image "cards/#{current_cards[6].printCard}.jpg", :width => @cardWidth
+			@card7 = image "../../images/cards/#{current_cards[6].printCard}.jpg", :width => @cardWidth
 				@card7.click {
 					self.addCardToSet(@playerSet, current_cards[6])
 				}
-			@card8 = image "cards/#{current_cards[7].printCard}.jpg", :width => @cardWidth
+			@card8 = image "../../images/cards/#{current_cards[7].printCard}.jpg", :width => @cardWidth
 				@card8.click {
 					self.addCardToSet(@playerSet, current_cards[7])
 				}
-			@card9 = image "cards/#{current_cards[8].printCard}.jpg", :width => @cardWidth
+			@card9 = image "../../images/cards/#{current_cards[8].printCard}.jpg", :width => @cardWidth
 				@card9.click {
 					self.addCardToSet(@playerSet, current_cards[8])
 				}
 		end
 		@f4 = flow :width => @innerWidth do
-			@card10 = image "cards/#{current_cards[9].printCard}.jpg", :width => @cardWidth
+			@card10 = image "../../images/cards/#{current_cards[9].printCard}.jpg", :width => @cardWidth
 				@card10.click {
 					self.addCardToSet(@playerSet, current_cards[9])
 				}
-			@card11 = image "cards/#{current_cards[10].printCard}.jpg", :width => @cardWidth
+			@card11 = image "../../images/cards/#{current_cards[10].printCard}.jpg", :width => @cardWidth
 				@card11.click {
 					self.addCardToSet(@playerSet, current_cards[10])
 				}
-			@card12 = image "cards/#{current_cards[11].printCard}.jpg", :width => @cardWidth
+			@card12 = image "../../images/cards/#{current_cards[11].printCard}.jpg", :width => @cardWidth
 				@card12.click {
 					self.addCardToSet(@playerSet, current_cards[11])
 				}
 		end
 		@f5 = flow :width => @innerWidth do
-			@card13 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
+			@card13 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card13.click {
 					self.addCardToSet(@playerSet, current_cards[12])
 				}
-			@card14 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
+			@card14 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card14.click {
 					self.addCardToSet(@playerSet, current_cards[13])
 				}
-			@card15 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
+			@card15 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card15.click {
 					self.addCardToSet(@playerSet, current_cards[14])
 				}
 		end
 		@f6 = flow :width => @innerWidth do
-			@card16 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
+			@card16 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card16.click {
 					self.addCardToSet(@playerSet, current_cards[15])
 				}
-			@card17 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
+			@card17 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card17.click {
 					self.addCardToSet(@playerSet, current_cards[16])
 				}
-			@card18 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
+			@card18 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card18.click {
 					self.addCardToSet(@playerSet, current_cards[17])
 				}
