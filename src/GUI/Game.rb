@@ -38,9 +38,12 @@ class Game
     @exit = button 'Exit'
       @exit.move(930,540)
       @exit.click { exit }
-
+	
 	@addThreeCards = button 'Add Three Cards'
 		@addThreeCards.move(437, 475)
+
+	
+		
 
 # method to fill up the set array with the chosen cards
 	def addCardToSet(playerSet, cardName, cardSet, card, positions, pos, current_cards, deck)
@@ -76,94 +79,114 @@ class Game
 		@f01 = flow :width => @outerWidth do 
 		end
 		@f1 = flow :width => @innerWidth do
-			@card1 = image "../../images/cards/#{current_cards[0].printCard}.jpg", :width => @cardWidth
+			@card1 = image "../../images/cards/#{current_cards[0].printCard}.jpg", :width => @cardWidth		
 				@card1.click {
+					@card1.rotate 5
 					self.addCardToSet(@playerSet, current_cards[0], @cardSet, @card1, @positions, 0, current_cards, deck) 
 					# self.changeTurn(@playersTurn, opponent)
 				}
-			@card2 = image "../../images/cards/#{current_cards[1].printCard}.jpg", :width => @cardWidth
+			@card2 = image "../../images/cards/#{current_cards[1].printCard}.jpg", :width => @cardWidth	
 				@card2.click {
+					@card2.rotate 5
 					self.addCardToSet(@playerSet, current_cards[1], @cardSet, @card2, @positions, 1, current_cards, deck)
 				}
 			@card3 = image "../../images/cards/#{current_cards[2].printCard}.jpg", :width => @cardWidth
 				@card3.click {
+					@card3.rotate 5
 					self.addCardToSet(@playerSet, current_cards[2], @cardSet, @card3, @positions, 2, current_cards, deck)
 				}
 		end
 		@f2 = flow :width => @innerWidth do
 			@card4 = image "../../images/cards/#{current_cards[3].printCard}.jpg", :width => @cardWidth
 				@card4.click {
+					@card4.rotate 5
 					self.addCardToSet(@playerSet, current_cards[3], @cardSet, @card4, @positions, 3, current_cards, deck)
 				}
 			@card5 = image "../../images/cards/#{current_cards[4].printCard}.jpg", :width => @cardWidth
 				@card5.click {
+					@card5.rotate 5
 					self.addCardToSet(@playerSet, current_cards[4], @cardSet, @card5, @positions, 4, current_cards, deck)
 				}
 			@card6 = image "../../images/cards/#{current_cards[5].printCard}.jpg", :width => @cardWidth
 				@card6.click {
+					@card6.rotate 5
 					self.addCardToSet(@playerSet, current_cards[5], @cardSet, @card6, @positions, 5, current_cards, deck)
 				}
 		end
 		@f3 = flow :width => @innerWidth do
+			
 			@card7 = image "../../images/cards/#{current_cards[6].printCard}.jpg", :width => @cardWidth
 				@card7.click {
+					@card7.rotate 5
 					self.addCardToSet(@playerSet, current_cards[6], @cardSet, @card7, @positions, 6, current_cards, deck)
 				}
+
 			@card8 = image "../../images/cards/#{current_cards[7].printCard}.jpg", :width => @cardWidth
 				@card8.click {
+					@card8.rotate 5
 					self.addCardToSet(@playerSet, current_cards[7], @cardSet, @card8, @positions, 7, current_cards, deck)
 				}
 			@card9 = image "../../images/cards/#{current_cards[8].printCard}.jpg", :width => @cardWidth
 				@card9.click {
+					@card9.rotate 5
 					self.addCardToSet(@playerSet, current_cards[8], @cardSet, @card9, @positions, 8, current_cards, deck)
 				}
 		end
 		@f4 = flow :width => @innerWidth do
 			@card10 = image "../../images/cards/#{current_cards[9].printCard}.jpg", :width => @cardWidth
 				@card10.click {
+					@card10.rotate 5
 					self.addCardToSet(@playerSet, current_cards[9], @cardSet, @card10, @positions, 9, current_cards, deck)
 				}
 			@card11 = image "../../images/cards/#{current_cards[10].printCard}.jpg", :width => @cardWidth
 				@card11.click {
+					@card11.rotate 5
 					self.addCardToSet(@playerSet, current_cards[10], @cardSet, @card11, @positions, 10, current_cards, deck)
 				}
 			@card12 = image "../../images/cards/#{current_cards[11].printCard}.jpg", :width => @cardWidth
 				@card12.click {
+					@card12.rotate 5
 					self.addCardToSet(@playerSet, current_cards[11], @cardSet, @card12, @positions, 11, current_cards, deck)
 				}
 		end
 		@f5 = flow :width => @innerWidth do
 			@card13 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card13.click {
+					@card13.rotate 5
 					self.addCardToSet(@playerSet, current_cards[12], @cardSet, @card13, @positions, 12, current_cards, deck)
 				}
 			@card14 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card14.click {
+					@card14.rotate 5
 					self.addCardToSet(@playerSet, current_cards[13], @cardSet, @card14, @positions, 13, current_cards, deck)
 				}
 			@card15 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card15.click {
+					@card15.rotate 5
 					self.addCardToSet(@playerSet, current_cards[14], @cardSet, @card15, @positions, 14, current_cards, deck)
 				}
 		end
 		@f6 = flow :width => @innerWidth do
 			@card16 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card16.click {
+					@card16.rotate 5
 					self.addCardToSet(@playerSet, current_cards[15], @cardSet, @card16, @positions, 15, current_cards, deck)
 				}
 			@card17 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card17.click {
+					@card17.rotate 5
 					self.addCardToSet(@playerSet, current_cards[16], @cardSet, @card17, @positions, 16, current_cards, deck)
 				}
 			@card18 = image "../../images/cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card18.click {
+					@card18.rotate 5
 					self.addCardToSet(@playerSet, current_cards[17], @cardSet, @card18, @positions, 17, current_cards, deck)
 				}
 		end
 		@f02 = flow :width => @outerWidth do 
 		end
 	}	
-
+	
 	@addThreeCards.click {
 		if @rows <= 4 && @rows >= 4
 			Utility.changeThreeCardsWidth(@card1, @card2, @card3, 160)
