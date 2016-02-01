@@ -40,10 +40,44 @@ class Utility
         checkSymbol?(cardOne, cardTwo, cardThree) && checkNumber?(cardOne, cardTwo, cardThree)
   end
 
-  # Returns true if fC, sC and tC are three different cards. False otherwise.
-  # +fC+:: First card
-  # +sC+:: Second card
-  # +tC+:: Third card
+  private
+  # Static method checks if colors in given three cards form a valid set configuration
+  # +cardOne+:: First card that might form a set
+  # +cardTwo+:: Second card that might form a set
+  # +cardThree+:: Third card that might form a set.
+  def self.checkColor? (one, two, three)
+    (one.color == two.color && two.color == three.color) ||
+        (one.color != two.color && one.color != three.color && two.color != three.color)
+  end
+
+  # Static method checks if fill in given three cards form a valid set configuration
+  # +cardOne+:: First card that might form a set
+  # +cardTwo+:: Second card that might form a set
+  # +cardThree+:: Third card that might form a set.
+  def self.checkFill? (one, two, three)
+    (one.fillType == two.fillType && two.fillType == three.fillType) ||
+        (one.fillType != two.fillType && one.fillType != three.fillType && two.fillType != three.fillType)
+  end
+
+  # Static method checks if symbol in given three cards form a valid set configuration
+  # +cardOne+:: First card that might form a set
+  # +cardTwo+:: Second card that might form a set
+  # +cardThree+:: Third card that might form a set.
+  def self.checkSymbol? (one, two, three)
+    (one.shapeType == two.shapeType && two.shapeType == three.shapeType) ||
+        (one.shapeType != two.shapeType && one.shapeType != three.shapeType && two.shapeType != three.shapeType)
+  end
+
+  # Static method checks if number of symbols in given three cards form a valid set configuration
+  # +cardOne+:: First card that might form a set
+  # +cardTwo+:: Second card that might form a set
+  # +cardThree+:: Third card that might form a set.
+  def self.checkNumber? (one, two, three)
+    (one.numberOfSymbols == two.numberOfSymbols && two.numberOfSymbols == three.numberOfSymbols) ||
+        (one.numberOfSymbols != two.numberOfSymbols && one.numberOfSymbols != three.numberOfSymbols &&
+            two.numberOfSymbols != three.numberOfSymbols)
+  end
+
   def self.areUnique(fC, sC, tC)
     !(fC.equal?(sC) || fC.equal?(tC) || sC.equal?(tC))
   end
@@ -91,45 +125,52 @@ class Utility
        end
       end
       end
-    end
-  isValid = isValid && validRow
-  isValid
-
-  private
-  # Static method checks if colors in given three cards form a valid set configuration
-  # +cardOne+:: First card that might form a set
-  # +cardTwo+:: Second card that might form a set
-  # +cardThree+:: Third card that might form a set.
-   def self.checkColor? (one, two, three)
-    (one.color == two.color && two.color == three.color) ||
-        (one.color != two.color && one.color != three.color && two.color != three.color)
+    isValid = isValid && validRow
+    isValid
   end
 
-  # Static method checks if fill in given three cards form a valid set configuration
-  # +cardOne+:: First card that might form a set
-  # +cardTwo+:: Second card that might form a set
-  # +cardThree+:: Third card that might form a set.
-    def self.checkFill? (one, two, three)
-    (one.fillType == two.fillType && two.fillType == three.fillType) ||
-        (one.fillType != two.fillType && one.fillType != three.fillType && two.fillType != three.fillType)
+  def self.hideThreeCards(c1, c2, c3)
+    c1.hide
+    c2.hide
+    c3.hide
   end
 
-  # Static method checks if symbol in given three cards form a valid set configuration
-  # +cardOne+:: First card that might form a set
-  # +cardTwo+:: Second card that might form a set
-  # +cardThree+:: Third card that might form a set.
-   def self.checkSymbol? (one, two, three)
-    (one.shapeType == two.shapeType && two.shapeType == three.shapeType) ||
-        (one.shapeType != two.shapeType && one.shapeType != three.shapeType && two.shapeType != three.shapeType)
+  def self.showThreeCards(c1, c2, c3)
+    c1.show
+    c2.show
+    c3.show
   end
 
-  # Static method checks if number of symbols in given three cards form a valid set configuration
-  # +cardOne+:: First card that might form a set
-  # +cardTwo+:: Second card that might form a set
-  # +cardThree+:: Third card that might form a set.
-   def self.checkNumber? (one, two, three)
-    (one.numberOfSymbols == two.numberOfSymbols && two.numberOfSymbols == three.numberOfSymbols) ||
-        (one.numberOfSymbols != two.numberOfSymbols && one.numberOfSymbols != three.numberOfSymbols &&
-            two.numberOfSymbols != three.numberOfSymbols)
+  def self.changeThreeCardsWidth(c1, c2, c3, cW)
+    c1.style(:width => cW)
+    c2.style(:width => cW)
+    c3.style(:width => cW)
   end
+  
+  def self.changeFiveFlowWidth(f1, f2, f3, f4, f5)
+	f1.style(:width => '16%')
+	f2.style(:width => '16%')
+	f3.style(:width => '16%')
+	f4.style(:width => '16%')
+	f5.style(:width => '16%')
+  end
+
+  def self.changeSixFlowWidth(f1, f2, f3, f4, f5, f6)
+	f1.style(:width => '15%')
+	f2.style(:width => '15%')
+	f3.style(:width => '15%')
+	f4.style(:width => '15%')
+	f5.style(:width => '15%')
+	f6.style(:width => '15%')
+  end
+
+  def self.changeThreePaths(card1, card2, card3, deck, current_cards, rows)
+	current_cards[rows*3+1] = deck.removeAny
+	current_cards[rows*3+2] = deck.removeAny
+	current_cards[rows*3+3] = deck.removeAny
+	card1.path = "cards/#{current_cards[rows*3+1].printCard}.jpg"
+	card2.path = "cards/#{current_cards[rows*3+2].printCard}.jpg"
+	card3.path = "cards/#{current_cards[rows*3+3].printCard}.jpg"
+  end
+
 end

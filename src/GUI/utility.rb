@@ -3,6 +3,9 @@ require_relative 'card.rb'
 
 class Utility
 
+  #Parses inputString and returns an array containing row and column.
+  # +inputString+: Formatted string to parse row and column data from.
+  # Returns array containing row and column with corrected index.
   def self.parseInput (inputString)
     row = inputString.to_i
     column = row % 100
@@ -11,6 +14,9 @@ class Utility
   end
 
 
+  #Prints cards to screen.
+  # +currentCards+:: 2-D array containing cards currently on the table.
+  # +numRows+:: Number of rows where cards are contained.
   def self.printCards(currentCards, numRows)
     puts "##############################################"
     puts""
@@ -29,7 +35,7 @@ class Utility
   # +cardOne+:: First card that might form a set
   # +cardTwo+:: Second card that might form a set
   # +cardThree+:: Third card that might form a set.
-  def self.isSet?(cardOne, cardTwo, cardThree)
+  def self.isSet? (cardOne, cardTwo, cardThree)
     checkColor?(cardOne, cardTwo, cardThree) && checkFill?(cardOne, cardTwo, cardThree) &&
         checkSymbol?(cardOne, cardTwo, cardThree) && checkNumber?(cardOne, cardTwo, cardThree)
   end
@@ -116,9 +122,9 @@ class Utility
          if input[i][j].eql?("#{j}")
            validRow = true
          end
-       end  
+       end
       end
-    end
+      end
     isValid = isValid && validRow
     isValid
   end

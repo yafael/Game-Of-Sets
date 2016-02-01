@@ -33,8 +33,10 @@ class Card
     "#{@color[0]}#{@fillType[0]}#{@shapeType[0]}#{@numberOfSymbols[0]}"
   end
 
+  #Checks if c2 is equal to c1.
+  # +c2+:: Card to check equality to.
   def equal?(c2)
-    @color.eql?(c2.color) && @fillType.eql?(c2.fillType) && @shapeType.eql?(c2.shapeType) && @numberOfSymbols.eql?(c2.numberOfSymbols)
+    @color == c2.color && @fillType == c2.fillType && @shapeType == c2.shapeType && @numberOfSymbols == c2.numberOfSymbols
   end
 
 end
