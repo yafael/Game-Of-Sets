@@ -167,4 +167,13 @@ class Utility
 	card3.path = "cards/#{current_cards[rows*3+3].printCard}.jpg"
   end
 
+  def self.changeThreePaths2(card1, card2, card3, deck, current_cards, positions)
+	current_cards[positions[0]] = deck.removeAny
+	current_cards[positions[1]] = deck.removeAny
+	current_cards[positions[2]] = deck.removeAny
+	card1.path = "cards/#{current_cards[positions[0]].printCard}.jpg"
+	card2.path = "cards/#{current_cards[positions[1]].printCard}.jpg"
+	card3.path = "cards/#{current_cards[positions[2]].printCard}.jpg"
+  end
+
 end

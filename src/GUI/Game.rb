@@ -14,6 +14,17 @@ class Game
     @player1Score = 0
     @player2Score = 0
     @playersTurn = 1
+    @positions = []
+    # array to hold Set cards
+    @playerSet = []
+    @cardSet = []
+     # create deck and pull out initial 12 cards, saving printable names (without .jpg extension) in current_cards array
+    deck = Deck.new
+    current_cards = []
+    for i in 0...12 do
+	  card = deck.removeAny
+	  current_cards.push card
+    end
 
     # button to close game window and return to main menu
     @mainMenu = button 'Main Menu'
@@ -32,32 +43,26 @@ class Game
 		@addThreeCards.move(437, 475)
 
 # method to fill up the set array with the chosen cards
-	def addCardToSet(playerSet, cardName)
+	def addCardToSet(playerSet, cardName, cardSet, card, positions, pos, current_cards, deck)
 		playerSet.push cardName
+		cardSet.push card
+		positions.push pos
 		if playerSet.length == 3
 			# check for unique cards and Set; report results
-			if Utility.areUnique(playerSet[0], playerSet[1], playerSet[2]) && Utility.isSet?(playerSet[0], playerSet[1], playerSet[2])
+			if true # Utility.areUnique(playerSet[0], playerSet[1], playerSet[2]) && Utility.isSet?(playerSet[0], playerSet[1], playerSet[2])
 				alert 'Congratulations! You found a Set!'
 				# update appropriate player score (!!!!NEED TO ADD 2-PLAYER SCORE UPDATING)
 				@player1Score += 1
 				@player21coreText.replace "Player 1 Score: #{@player1Score}", :align => 'center'
+				self.updateCards(current_cards, cardSet, positions, deck)
 			else
 				alert 'Sorry, that is not a Set. Try again!'
 			end
 		playerSet.clear
+		cardSet.clear
+		positions.clear
 		end
 	end
-
-    # array to hold Set cards
-    @playerSet = []
-
-    # create deck and pull out initial 12 cards, saving printable names (without .jpg extension) in current_cards array
-    deck = Deck.new
-    current_cards = []
-    for i in 0...12 do
-	  card = deck.removeAny
-	  current_cards.push card
-    end
 	
 	# 12 cards: oW = 10% iW = 20% cW = 200
 	# 15 cards: oW = 10% iW = 16% cW = 160
@@ -73,86 +78,86 @@ class Game
 		@f1 = flow :width => @innerWidth do
 			@card1 = image "cards/#{current_cards[0].printCard}.jpg", :width => @cardWidth
 				@card1.click {
-					self.addCardToSet(@playerSet, current_cards[0]) 
-					self.changeTurn(@playersTurn, opponent)
+					self.addCardToSet(@playerSet, current_cards[0], @cardSet, @card1, @positions, 0, current_cards, deck) 
+					# self.changeTurn(@playersTurn, opponent)
 				}
 			@card2 = image "cards/#{current_cards[1].printCard}.jpg", :width => @cardWidth
 				@card2.click {
-					self.addCardToSet(@playerSet, current_cards[1])
+					self.addCardToSet(@playerSet, current_cards[1], @cardSet, @card2, @positions, 1, current_cards, deck)
 				}
 			@card3 = image "cards/#{current_cards[2].printCard}.jpg", :width => @cardWidth
 				@card3.click {
-					self.addCardToSet(@playerSet, current_cards[2])
+					self.addCardToSet(@playerSet, current_cards[2], @cardSet, @card3, @positions, 2, current_cards, deck)
 				}
 		end
 		@f2 = flow :width => @innerWidth do
 			@card4 = image "cards/#{current_cards[3].printCard}.jpg", :width => @cardWidth
 				@card4.click {
-					self.addCardToSet(@playerSet, current_cards[3])
+					self.addCardToSet(@playerSet, current_cards[3], @cardSet, @card4, @positions, 3, current_cards, deck)
 				}
 			@card5 = image "cards/#{current_cards[4].printCard}.jpg", :width => @cardWidth
 				@card5.click {
-					self.addCardToSet(@playerSet, current_cards[4])
+					self.addCardToSet(@playerSet, current_cards[4], @cardSet, @card5, @positions, 4, current_cards, deck)
 				}
 			@card6 = image "cards/#{current_cards[5].printCard}.jpg", :width => @cardWidth
 				@card6.click {
-					self.addCardToSet(@playerSet, current_cards[5])
+					self.addCardToSet(@playerSet, current_cards[5], @cardSet, @card6, @positions, 5, current_cards, deck)
 				}
 		end
 		@f3 = flow :width => @innerWidth do
 			@card7 = image "cards/#{current_cards[6].printCard}.jpg", :width => @cardWidth
 				@card7.click {
-					self.addCardToSet(@playerSet, current_cards[6])
+					self.addCardToSet(@playerSet, current_cards[6], @cardSet, @card7, @positions, 6, current_cards, deck)
 				}
 			@card8 = image "cards/#{current_cards[7].printCard}.jpg", :width => @cardWidth
 				@card8.click {
-					self.addCardToSet(@playerSet, current_cards[7])
+					self.addCardToSet(@playerSet, current_cards[7], @cardSet, @card8, @positions, 7, current_cards, deck)
 				}
 			@card9 = image "cards/#{current_cards[8].printCard}.jpg", :width => @cardWidth
 				@card9.click {
-					self.addCardToSet(@playerSet, current_cards[8])
+					self.addCardToSet(@playerSet, current_cards[8], @cardSet, @card9, @positions, 8, current_cards, deck)
 				}
 		end
 		@f4 = flow :width => @innerWidth do
 			@card10 = image "cards/#{current_cards[9].printCard}.jpg", :width => @cardWidth
 				@card10.click {
-					self.addCardToSet(@playerSet, current_cards[9])
+					self.addCardToSet(@playerSet, current_cards[9], @cardSet, @card10, @positions, 9, current_cards, deck)
 				}
 			@card11 = image "cards/#{current_cards[10].printCard}.jpg", :width => @cardWidth
 				@card11.click {
-					self.addCardToSet(@playerSet, current_cards[10])
+					self.addCardToSet(@playerSet, current_cards[10], @cardSet, @card11, @positions, 10, current_cards, deck)
 				}
 			@card12 = image "cards/#{current_cards[11].printCard}.jpg", :width => @cardWidth
 				@card12.click {
-					self.addCardToSet(@playerSet, current_cards[11])
+					self.addCardToSet(@playerSet, current_cards[11], @cardSet, @card12, @positions, 11, current_cards, deck)
 				}
 		end
 		@f5 = flow :width => @innerWidth do
 			@card13 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card13.click {
-					self.addCardToSet(@playerSet, current_cards[12])
+					self.addCardToSet(@playerSet, current_cards[12], @cardSet, @card13, @positions, 12, current_cards, deck)
 				}
 			@card14 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card14.click {
-					self.addCardToSet(@playerSet, current_cards[13])
+					self.addCardToSet(@playerSet, current_cards[13], @cardSet, @card14, @positions, 13, current_cards, deck)
 				}
 			@card15 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card15.click {
-					self.addCardToSet(@playerSet, current_cards[14])
+					self.addCardToSet(@playerSet, current_cards[14], @cardSet, @card15, @positions, 14, current_cards, deck)
 				}
 		end
 		@f6 = flow :width => @innerWidth do
 			@card16 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card16.click {
-					self.addCardToSet(@playerSet, current_cards[15])
+					self.addCardToSet(@playerSet, current_cards[15], @cardSet, @card16, @positions, 15, current_cards, deck)
 				}
 			@card17 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card17.click {
-					self.addCardToSet(@playerSet, current_cards[16])
+					self.addCardToSet(@playerSet, current_cards[16], @cardSet, @card17, @positions, 16, current_cards, deck)
 				}
 			@card18 = image "cards/#{Deck.new.removeAny.printCard}.jpg", :width => @cardWidth
 				@card18.click {
-					self.addCardToSet(@playerSet, current_cards[17])
+					self.addCardToSet(@playerSet, current_cards[17], @cardSet, @card18, @positions, 17, current_cards, deck)
 				}
 		end
 		@f02 = flow :width => @outerWidth do 
@@ -197,7 +202,7 @@ class Game
 				@player21coreText = para "Player 1 Score: #{@player1Score}", :align => 'center'
 			end
 			stack :width => '60%' do 
-				@playersTurnStr = para "Player 1's turn: Please choose three cards.", :align => 'center'
+				# @playersTurnStr = para "Player 1's turn: Please choose three cards.", :align => 'center'
 			end
 			stack :width => '20%' do
 				@player2ScoreText = para "Player 2 Score: #{@player2Score}", :align => 'center'
@@ -209,7 +214,7 @@ class Game
 				@player21coreText = para "Player 1 Score: #{@player1Score}", :align => 'center'
 			end
 			stack :width => '60%' do 
-				@playersTurnStr = para "Player 1's turn: Please choose three cards.", :align => 'center'
+				# @playersTurnStr = para "Player 1's turn: Please choose three cards.", :align => 'center'
 			end
 			stack :width => '20%' do
 				@player2ScoreText = para "Computer's Score: #{@player2Score}", :align => 'center'
@@ -223,6 +228,22 @@ class Game
 				@playersTurnStr = para "Please choose three cards that form a Set!", :align => 'center'
 			end
 		}
+	end
+
+	def updateCards(current_cards, cardSet, positions, deck)
+		@image1 = cardSet.pop
+		@image2 = cardSet.pop
+		@image3 = cardSet.pop
+		if deck.cardsRemaining >= 3
+			Utility.changeThreePaths2(@image1, @image2, @image3, deck, current_cards, positions)
+		else
+			@image1.path = "cards/#{Deck.new.removeAny.printCard}.jpg"
+			@image2.path = "cards/#{Deck.new.removeAny.printCard}.jpg"
+			@image3.path = "cards/#{Deck.new.removeAny.printCard}.jpg"
+			@image1.hide
+			@image2.hide
+			@image3.hide
+		end
 	end
 
 # ideally we don't want to have any turns because it's a speed game; we should figure out which player found the Set and update their score accordingly
