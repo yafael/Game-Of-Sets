@@ -6,11 +6,11 @@ require_relative 'GUI_Utility.rb'
 require_relative 'Game.rb'
 require_relative 'instructions.rb'
 require_relative 'HighScoreGUI.rb'
-require_relative 'game_model.rb'
+require_relative '../game_model.rb'
 
 class Main
 	Shoes.app :title => "Main Menu", :width => 1024, :height => 576 do
-			background 'backgroung.jpg', :width => 1024, :height => 576
+			background '../../images/backgroung.jpg', :width => 1024, :height => 576
 		stack :width => "100%" do
 			@title = banner 'The Game of Set', :stroke => white, :align => 'center', :font => 'Trebuchet MS', :top => 30
 		end
