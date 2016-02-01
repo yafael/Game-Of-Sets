@@ -1,5 +1,3 @@
-
-
 class HighScore
 
   attr_reader :highscores
