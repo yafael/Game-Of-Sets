@@ -49,7 +49,7 @@ class Game
 		positions.push pos
 		if playerSet.length == 3
 			# check for unique cards and Set; report results
-			if true # Utility.areUnique(playerSet[0], playerSet[1], playerSet[2]) && Utility.isSet?(playerSet[0], playerSet[1], playerSet[2])
+			if Utility.areUnique(playerSet[0], playerSet[1], playerSet[2]) && Utility.isSet?(playerSet[0], playerSet[1], playerSet[2])
 				alert 'Congratulations! You found a Set!'
 				# update appropriate player score (!!!!NEED TO ADD 2-PLAYER SCORE UPDATING)
 				@player1Score += 1

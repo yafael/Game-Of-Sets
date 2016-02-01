@@ -47,7 +47,7 @@ class Main_menu
 		  close
 		}
 		@Hsc.click { 
-		  HighScore.showHighScores	
+		  HighScoreGUI.showHighScores	
 		  close
 		}
 	end
